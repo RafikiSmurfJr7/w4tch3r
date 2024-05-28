@@ -30,6 +30,21 @@ From the comand line you can do:
 mariadb -u <username> -p sql_w4tch3r_pt < assets/sql_w4tch3r_pt_dump.sql
 ```
 
+#### Set db config parameters
+
+In the project file `config/database/data.php` set the following parameters
+
+```
+    // Default is localhost
+    "server" => "<server_addr>",
+    // Default is root
+    "username" => "<mysql_username>",
+    // Default is empty
+    "password" => "<mysql_password>",
+    // Default is sql_w4tch3r_pt
+    "database" => "<database_name>",
+```
+
 ### Run server
 
 You can use either PHP or Apache to run the dev server
