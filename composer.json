@@ -1,0 +1,24 @@
+{
+    "name": "rafikismurfjr7/w4tch3r",
+    "description": "A site to watch movies online",
+    "type": "project",
+    "require": {
+        "twbs/bootstrap": "^5.3",
+        "twbs/bootstrap-icons": "^1.11",
+        "datatables/datatables": "^1.10",
+        "components/jquery": "^3.7",
+        "msp/owlcarousel2": "^0.1.6"
+    },
+    "license": "GNU General Public License version 3",
+    "authors": [
+        {
+            "name": "RafikiSmurfJr7",
+            "email": "rafikismurf@gmail.com"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "magento/magento-composer-installer": false
+        }
+    }
+}
