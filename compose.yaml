@@ -3,16 +3,27 @@ name: w4tch3r
 services:
 
   web:
+    container_name: w4tch3r_web
     build: .
     env_file:
       - ./.env       
     ports:
       - 8000:8000
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+
     depends_on:
       - database
 
+    volumes:
+      - .:/app
+
 ###> doctrine/doctrine-bundle ###
   database:
+    container_name: w4tch3r_db
     image: 'mariadb:11.4.2'
     env_file:
       - ./.env        

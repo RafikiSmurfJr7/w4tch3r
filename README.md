@@ -22,14 +22,6 @@ Não sei kkkk
 
 Then run this command to turn on the dev env:
 
-For the first time
-
 ```
-docker compose up --build -d
-```
-
-All the other times
-
-```
-docker compose up -d
+docker compose up --watch
 ```
