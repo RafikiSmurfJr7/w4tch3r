@@ -1,4 +1,4 @@
-# ![W4TCH3R](./assets/img/w4tc3r_logo.svg)
+# ![W4TCH3R](./public/img/w4tc3r_logo.svg)
 
 ## Development environment configuration
 
