@@ -6,7 +6,21 @@
 
 In order to create the dev env you need to have docker engine installed:
 
-Run this command to turn on the dev env:
+First we need to setup the `.env` file, to do so you need to copy the information from the example, like:
+
+Linux
+
+```
+cp .env.example .env
+```
+
+Windows
+
+```
+Não sei kkkk
+```
+
+Then run this command to turn on the dev env:
 
 For the first time
 
