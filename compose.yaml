@@ -37,6 +37,16 @@ services:
       # - ./docker/db/data:/var/lib/postgresql/data:rw
 ###< doctrine/doctrine-bundle ###
 
+
+  phpmyadmin:
+    container_name: w4tch3r_phpmyadmin
+    image: phpmyadmin
+    ports:
+      - 8888:80
+    env_file:
+      - ./.env
+
+
 volumes:
 ###> doctrine/doctrine-bundle ###
   database_data:
