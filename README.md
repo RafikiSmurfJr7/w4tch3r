@@ -16,8 +16,14 @@ cp .env.example .env
 
 Windows
 
+    In CMD:
 ```
-Não sei kkkk
+copy .env.example .env 
+```
+    In PowerShell:
+
+```
+Copy-Item .env.example .env
 ```
 
 Then run this command to turn on the dev env:
