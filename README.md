@@ -17,9 +17,11 @@ cp .env.example .env
 Windows
 
     In CMD:
+
 ```
-copy .env.example .env 
+copy .env.example .env
 ```
+
     In PowerShell:
 
 ```
@@ -30,4 +32,16 @@ Then run this command to turn on the dev env:
 
 ```
 docker compose up --watch
+```
+
+To run commands inside the docker container run:
+
+```
+docker compose exec <container_name> <command>
+```
+
+example:
+
+```
+docker compose exec web ls
 ```
