@@ -45,3 +45,11 @@ example:
 ```
 docker compose exec web ls
 ```
+
+a command that is necessary to install all dependencies is:
+
+```
+docker compose exec symfony composer update
+```
+
+it is important to use the `symfony-cli` for this to work. Default composer is not installed on the container.
