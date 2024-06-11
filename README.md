@@ -53,3 +53,15 @@ docker compose exec symfony composer update
 ```
 
 it is important to use the `symfony-cli` for this to work. Default composer is not installed on the container.
+
+The web server will run on port `8000`, you can access it by going to the address `http://127.0.0.1:8000`
+
+## phpMyAdmin
+
+There is also a phpMyAdmin service running on port `8888` to access it you need to go to the address `http://127.0.0.1:8888` and login with the following credentials
+
+> Server: `<leave_empty>`  
+> Usename: user  
+> Password: pass
+
+After that you can manage the database for the project, the default name is `database`.
