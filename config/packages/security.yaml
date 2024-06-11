@@ -22,8 +22,9 @@ security:
     main:
       lazy: true
       provider: app_user_provider
-      http_basic:
-        realm: Secured Area
+      json_login:
+        # api_login is a route we will create below
+        check_path: auth_login
 
       # activate different ways to authenticate
       # https://symfony.com/doc/current/security.html#the-firewall
