@@ -52,6 +52,12 @@ a command that is necessary to install all dependencies is:
 docker compose exec symfony composer update
 ```
 
+then apply all the migrations to have a clean project:
+
+```
+docker compose exec symfony console doctrine:migrations:migrate
+```
+
 it is important to use the `symfony-cli` for this to work. Default composer is not installed on the container.
 
 The web server will run on port `8000`, you can access it by going to the address `http://127.0.0.1:8000`
