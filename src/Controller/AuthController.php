@@ -27,14 +27,14 @@ class AuthController extends AbstractController
                 [
                     'message' => 'You cannot leave blank fields'
                 ],
-                status: Response::HTTP_BAD_REQUEST
+                status: Response::HTTP_UNPROCESSABLE_ENTITY
             );
         } else if ($userRepository->findOneBy(['username' => $authData["username"]])) {
             return $this->json(
                 [
-                    'message' => 'The username ' . $authData["username"] . ' has already been inserted.'
+                    'message' => 'The username ' . $authData["username"] . ' already exists.'
                 ],
-                status: Response::HTTP_BAD_REQUEST
+                status: Response::HTTP_CONFLICT
             );
         }
 

@@ -22,6 +22,7 @@
         "symfony/runtime": "7.1.*",
         "symfony/security-bundle": "7.1.*",
         "symfony/serializer": "7.1.*",
+        "symfony/uid": "7.1.*",
         "symfony/yaml": "7.1.*"
     },
     "config": {
