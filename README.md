@@ -1,63 +1,73 @@
-# ![W4TCH3R](./assets/img/w4tc3r_logo.svg)
+# ![W4TCH3R](./public/img/w4tc3r_logo.svg)
 
 ## Development environment configuration
 
 ### Requirements
 
-In order to create the dev env you need to have a web stack such as:
+In order to create the dev env you need to have docker engine installed:
 
-- LAMP
-- WAMP
-- MAMP
+First we need to setup the `.env` file, to do so you need to copy the information from the example, like:
 
-In most cases you can use [XAMPP](https://www.apachefriends.org/), if you are in Linux you probably want to use a LAMP.
-
-The software you need to have installed is:
-
-- PHP (>=7.4)
-- Apache
-- MySQL or MariaDB
-- Composer
-- Git
-
-### Configure Database
-
-Import the SQL dump (`assets/sql_w4tch3r_pt_dump.sql`)
-
-From the comand line you can do:
+Linux
 
 ```
-mariadb -u <username> -p sql_w4tch3r_pt < assets/sql_w4tch3r_pt_dump.sql
+cp .env.example .env
 ```
 
-#### Set db config parameters
+Windows
 
-In the project file `config/database/data.php` set the following parameters
+    In CMD:
 
 ```
-    // Default is localhost
-    "server" => "<server_addr>",
-    // Default is root
-    "username" => "<mysql_username>",
-    // Default is empty
-    "password" => "<mysql_password>",
-    // Default is sql_w4tch3r_pt
-    "database" => "<database_name>",
+copy .env.example .env
 ```
 
-### Run server
+    In PowerShell:
 
-You can use either PHP or Apache to run the dev server
+```
+Copy-Item .env.example .env
+```
 
-PHP: `php -S localhost:<port>`
-ex: `php -S localhost:8080`
+Then run this command to turn on the dev env:
 
-With the comand above the server will run on port 8080 at the address http://localhost:8080
+```
+docker compose up --watch
+```
 
-## Credentials
+To run commands inside the docker container run:
 
-The dump contains the following credentials
+```
+docker compose exec <container_name> <command>
+```
 
-| Users          | Username | Password |
-| -------------- | -------- | -------- |
-| Admininstrator | admin    | admin    |
+example:
+
+```
+docker compose exec web ls
+```
+
+a command that is necessary to install all dependencies is:
+
+```
+docker compose exec symfony composer update
+```
+
+then apply all the migrations to have a clean project:
+
+```
+docker compose exec symfony console doctrine:migrations:migrate
+```
+
+it is important to use the `symfony-cli` for this to work. Default composer is not installed on the container.
+
+The web server will run on port `8000`, you can access it by going to the address `http://127.0.0.1:8000`
+
+## phpMyAdmin
+
+There is also a phpMyAdmin service running on port `8888` to access it you need to go to the address `http://127.0.0.1:8888` and login with the following credentials
+
+> Server: `<leave_empty>`  
+> Usename: user  
+> Password: pass
+
+After that you can manage the database for the project, the default name is `database`.
