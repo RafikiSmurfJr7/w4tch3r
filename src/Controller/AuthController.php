@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\CurrentUser;
 
 class AuthController extends AbstractController
 {
@@ -49,5 +50,24 @@ class AuthController extends AbstractController
             'message' => "User " . $user->getUsername() . " saved",
             'data' => $user
         ]);
+    }
+
+
+    #[Route('/auth/login', name: 'auth_login', methods: ['POST'])]
+    public function login(#[CurrentUser] ?User $user): Response
+    {
+        if (null === $user) {
+            return $this->json([
+                'message' => 'missing credentials',
+            ], Response::HTTP_UNAUTHORIZED);
+        }
+
+        $token = md5(rand());
+
+        return $this->json([
+            'user' => $user->getUserIdentifier(),
+            'token' => $token,
+        ]);
+
     }
 }
