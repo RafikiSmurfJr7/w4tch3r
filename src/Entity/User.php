@@ -34,6 +34,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\Column]
+    private ?string $accessToken = null;
+
     public function getId(): ?Uuid
     {
         return $this->id;
@@ -96,6 +99,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): static
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccessToken(): string
+    {
+        return $this->accessToken;
+    }
+
+    /**
+     * @param string
+     */
+    public function setAccessToken(string $accessToken): static
+    {
+        $this->accessToken = $accessToken;
 
         return $this;
     }

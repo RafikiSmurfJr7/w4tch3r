@@ -43,6 +43,7 @@ class AuthController extends AbstractController
 
         $user->setUsername($authData["username"]);
         $user->setPassword($passwordHasher->hashPassword($user, $authData["password"]));
+        $user->setAccessToken(md5(rand()));
 
         $userRepository->save($user);
 
@@ -62,7 +63,7 @@ class AuthController extends AbstractController
             ], Response::HTTP_UNAUTHORIZED);
         }
 
-        $token = md5(rand());
+        $token = $user->getAccessToken();
 
         return $this->json([
             'user' => $user->getUserIdentifier(),
