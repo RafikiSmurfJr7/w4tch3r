@@ -1,1 +1,3 @@
 /vendor/
+/assets/db/**
+!/assets/db/sql_w4tch3r_pt.sql

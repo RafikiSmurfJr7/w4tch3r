@@ -1,0 +1,26 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  web:
+    container_name: w4tch3r_web
+    build: .
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+
+  db:
+    container_name: w4tch3r_db
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_USER: user
+      MARIADB_PASSWORD: password
+      MARIADB_DATABASE: sql_w4tch3r_pt
+    volumes:
+      - ./assets/db/sql_w4tch3r_pt.sql:/docker-entrypoint-initdb.d/sql_w4tch3r_pt.sql
+
+ 
