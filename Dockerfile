@@ -4,13 +4,23 @@ COPY . /app
 WORKDIR /app
 
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
-ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 RUN apt-get update && apt-get install -y \
     symfony-cli \
-    unzip
+    unzip \
+    libfreetype-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    libicu-dev
 
-RUN install-php-extensions pdo_mysql intl gd
+RUN docker-php-ext-configure pdo_mysql
+RUN docker-php-ext-configure gd
+RUN docker-php-ext-configure intl
 
+RUN pecl install xdebug-3.2.1
+
+RUN docker-php-ext-install pdo_mysql gd intl
+
+RUN docker-php-ext-enable xdebug pdo_mysql gd intl
 
 EXPOSE 8000
 CMD [ "symfony", "serve" , "--port=8000" ]
