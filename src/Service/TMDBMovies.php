@@ -19,7 +19,7 @@ class TMDBMovies
 
         $response = $this->tmdbClient->request(
             'GET',
-            '/discover/movie'
+            'discover/movie'
         );
 
 
