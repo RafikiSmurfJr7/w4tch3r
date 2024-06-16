@@ -32,7 +32,7 @@ services:
     ports:
       - '3306'
     volumes:
-      - ./docker/db/data:/var/lib/mysql:r
+      - database_data:/var/lib/mysql
 ###< doctrine/doctrine-bundle ###
 
 
