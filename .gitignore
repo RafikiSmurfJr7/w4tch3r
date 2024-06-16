@@ -10,4 +10,6 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
+
+.vscode/
 docker/**

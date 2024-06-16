@@ -4,6 +4,8 @@ services:
 
   web:
     container_name: w4tch3r_web
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     build: .
     env_file:
       - ./.env       
@@ -30,7 +32,7 @@ services:
     ports:
       - '3306'
     volumes:
-      - ./docker/db/data:/var/lib/mysql:rw
+      - ./docker/db/data:/var/lib/mysql:r
 ###< doctrine/doctrine-bundle ###
 
 
